@@ -12,6 +12,8 @@ namespace Exercice1
 
             while (isWordNull(ref palindrome) != true) { };
             isPalindromeArr(ref palindrome);
+            isPalindromeForEach(ref palindrome);
+            isPalindromeFor(ref palindrome);
         }
 
         private static Boolean isWordNull(ref string palindrome)
@@ -37,12 +39,54 @@ namespace Exercice1
 
             if (first.Equals(second))
             {
-                Console.WriteLine("Success");
+                Console.WriteLine($"{palindrome} est un palindrome.");
                 return true;
             }
             else
             {
-                Console.WriteLine("Fail");
+                Console.WriteLine($"{palindrome} n'est pas un palindrome.");
+                return false;
+            }
+        }
+
+        private static void isPalindromeForEach(ref string palindrome)
+        {
+            char[] array = palindrome.ToCharArray();
+            Array.Reverse(array);
+            string temp = "";
+
+            foreach (char letter in array)
+            {
+                temp += letter;
+            }
+
+            validatePalindrome(palindrome, temp);
+        }
+
+        private static void isPalindromeFor(ref string palindrome)
+        {
+            char[] array = palindrome.ToCharArray();
+            Array.Reverse(array);
+            string temp = "";
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                temp += array[i];
+            }
+
+            validatePalindrome(palindrome, temp);
+        }
+
+        private static Boolean validatePalindrome(string palindrome, string temp)
+        {
+            if (temp.Equals(palindrome))
+            {
+                Console.WriteLine($"{palindrome} est un palindrome.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"{palindrome} n'est pas un palindrome.");
                 return false;
             }
         }
