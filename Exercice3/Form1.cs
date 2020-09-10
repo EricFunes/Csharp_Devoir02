@@ -17,23 +17,23 @@ namespace Exercice3
             InitializeComponent();
         }
         
-        // FIXME: Problem at resolving this method.
         private void btnValidate_Click(object sender, EventArgs e)
         {
             int[] array = nombresPairs(numTime.Value);
             txtBox.Text = string.Join(", ", array);
         }
-        private int[] nombresPairs(decimal nombre)
+        private int[] nombresPairs(decimal decimalNumber)
         {
-            int[] array = new int[Convert.ToInt32(nombre)];
-            int index = 0;
+            int length = Convert.ToInt32(decimalNumber);
+            int[] array = new int[length];
+            int num = 2;
 
-            for (int number = 2; number <= array.Length; number++)
+            for (int index = 0; index < length; index++)
             {
-                if (number % 2 == 0)
+                if( num % 2 == 0)
                 {
-                    array[index] = number;
-                    index++;
+                    array[index] = num;
+                    num += 2;
                 }
             }
             return array;
